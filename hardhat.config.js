@@ -22,13 +22,10 @@ module.exports = {
       blockConfirmations: 1,
     },
     sepolia: {
-      url: SEPOLIA_RPC_URL,
-      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
-      //   accounts: {
-      //     mnemonic: MNEMONIC,
-      //   },
-      saveDeployments: true,
       chainId: 11155111,
+      blockConfirmations: 6,
+      url: SEPOLIA_RPC_URL,
+      accounts: [PRIVATE_KEY] ,
   },
   },
   solidity: "0.8.19",
