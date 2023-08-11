@@ -8,12 +8,12 @@ module.exports = async ({ getNamedAccounts, deployments}) => {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
     const chainId = network.config.chainId
-    let vrfCoordinatorV2Address, subscriptionId, VRFCoordinatorV2Mock
+    let vrfCoordinatorV2Address, subscriptionId, VrfCoordinatorV2Mock
 
     if(developmentChains.includes(network.name)){
-        VRFCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
-        vrfCoordinatorV2Address = VRFCoordinatorV2Mock.address
-        const transactionResponse = await VRFCoordinatorV2Mock.createSubscription()
+        VrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
+        vrfCoordinatorV2Address = VrfCoordinatorV2Mock.target
+        const transactionResponse = await VrfCoordinatorV2Mock.createSubscription()
         const transactionReceipt = await transactionResponse.wait()
         console.log("---------..................-----------------")
         console.log(transactionReceipt.logs[0].args.subId)
@@ -23,7 +23,8 @@ module.exports = async ({ getNamedAccounts, deployments}) => {
         console.log("---------.............subscriptionId.....-----------------")
         console.log(subscriptionId)
         console.log("---------..................-----------------")
-        await VRFCoordinatorV2Mock.fundSubscription(subscriptionId, VRF_SUB_FUND_AMOUNT )
+        console.log(VrfCoordinatorV2Mock.target)
+        await VrfCoordinatorV2Mock.fundSubscription(subscriptionId, VRF_SUB_FUND_AMOUNT )
     } else{
         vrfCoordinatorV2Address = networkConfig[chainId]["vrfCoordinatorV2"]
         subscriptionId = networkConfig[chainId]["subscriptionId"]
