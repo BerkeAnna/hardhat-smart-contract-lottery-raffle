@@ -16,8 +16,8 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
             log: true,
             args: args
         })
-        log("Mosks deployed")
-        log("----------------------------------------")
+        log("Mocks deployed!")
+        log("----------------------------------------!")
     }
 }
 
