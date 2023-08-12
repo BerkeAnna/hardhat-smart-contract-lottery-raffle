@@ -30,7 +30,7 @@ module.exports = {
       chainId: 11155111,
       blockConfirmations: 6,
       url: SEPOLIA_RPC_URL,
-
+      subscriptionId: "4458",
       raffleEntranceFee: "0.01",
       accounts: [PRIVATE_KEY] ,
   },
