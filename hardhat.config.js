@@ -20,11 +20,20 @@ module.exports = {
     hardhat: {
       chainId: 31337,
       blockConfirmations: 1,
+      entranceFee: "0.01", 
+      gasLane: "0xd89b2bf150e3b9e13446986e571fb9cab24b13cea0a43ea20a6049a85cc807cc", // 30 gwei
+      keepersUpdateInterval: "30",
+      raffleEntranceFee: "100000000000000000", // 0.1 ETH
+      callbackGasLimit: "500000", // 500,000 gas
+
+       
     },
     sepolia: {
       chainId: 11155111,
       blockConfirmations: 6,
       url: SEPOLIA_RPC_URL,
+
+      raffleEntranceFee: "0.01",
       accounts: [PRIVATE_KEY] ,
   },
   },
